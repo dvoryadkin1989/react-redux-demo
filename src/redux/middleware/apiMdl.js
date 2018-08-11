@@ -11,7 +11,7 @@ const defaultApiCall = ({dispatch}) => next => action => {
 
     const {http} = action.payload;
     axios.get(http.url)
-        .then(response => dispatch(action.payload.successAction(response.data)))
+        .then(success => dispatch(action.payload.successAction(success.data)))
         .catch(error => dispatch(action.payload.failureAction(error.response)));
 };
 
