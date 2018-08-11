@@ -1,6 +1,7 @@
 // api names
 export const ApiNames = {
     POSTS: 'posts',
+    USERS: 'users',
 }
 
 // api stereotypes
