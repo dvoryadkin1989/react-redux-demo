@@ -7,7 +7,7 @@ export const getPostsRequest = {
 };
 
 export const getUsersRequest = {
-    url: 'https://jsonplaceholder.typicode.com/posts',
+    url: 'https://jsonplaceholder.typicode.com/users',
     method: 'GET',
     query: '',
     body: '',
