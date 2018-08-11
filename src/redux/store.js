@@ -1,18 +1,10 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 
-import postsReducer from './reducers/postsReducer';
-import apiReducer from './reducers/apiReducer';
-
-import api from './middleware/apiMdl';
-
-const rootReducer = combineReducers({
-    posts: postsReducer,
-    api: apiReducer,
-});
-
+import rootReducer from './reducers/';
+import applicationMdl from './middleware/';
 
 const logger = createLogger();
-const store = createStore(rootReducer, applyMiddleware(logger, ...api));
+const store = createStore(rootReducer, applyMiddleware(logger, ...applicationMdl));
 
 export default store;
