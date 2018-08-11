@@ -1,4 +1,5 @@
 import * as statuses from '../../constants/apiStatuses';
+import { apiStereotypes } from '../actions/constants';
 
 const initialState = {
     posts: {
@@ -7,26 +8,26 @@ const initialState = {
 };
 
 const apiReducer = (state = initialState, action) => {
-    if (!action.meta || !action.meta.apiName) {
+    if (!action.meta || !action.meta.api) {
         return state;
     }
 
-    if (action.type.endsWith('FETCHING_STARTED')) {
-        return handleFetchingStarted(state, action);
+    const {name, stereotype} = action.meta.api;
+
+    if (stereotype === apiStereotypes.API_STARTED) {
+        return handleFetchingStarted(name, state, action);
     }
-    if (action.type.endsWith('FETCHING_SUCCEEDED')) {
-        return handleFetchingSucceeded(state, action);
+    if (stereotype === apiStereotypes.API_SUCCESS) {
+        return handleFetchingSucceeded(name, state, action);
     }
-    if (action.type.endsWith('FETCHING_FAILED')) {
-        return handleFetchingFailed(state, action);
+    if (stereotype === apiStereotypes.API_ERROR) {
+        return handleFetchingFailed(name, state, action);
     }
 
     return state;
 };
 
-const handleFetchingStarted = (state, action) => {
-    const { apiName } = action.meta;
-
+const handleFetchingStarted = (apiName, state, action) => {
     return {
         ...state,
         [apiName]: {
@@ -35,9 +36,7 @@ const handleFetchingStarted = (state, action) => {
     };
 };
 
-const handleFetchingSucceeded = (state, action) => {
-    const { apiName } = action.meta;
-
+const handleFetchingSucceeded = (apiName, state, action) => {
     return {
         ...state,
         [apiName]: {
@@ -46,9 +45,7 @@ const handleFetchingSucceeded = (state, action) => {
     };
 };
 
-const handleFetchingFailed = (state, action) => {
-    const { apiName } = action.meta;
-
+const handleFetchingFailed = (apiName, state, action) => {
     return {
         ...state,
         [apiName]: {
