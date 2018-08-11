@@ -1,6 +1,6 @@
 import * as types from './types';
 import { getPostsRequest } from '../../http';
-import { apiNames, apiStereotypes } from './constants';
+import { ApiNames, ApiStereotypes } from './constants';
 
 export const fetchPosts = () => {
     return {
@@ -19,8 +19,8 @@ export const fetchingPostsStarted = () => {
         type: types.POSTS_FETCHING_STARTED,
         meta: {
             api: {
-                name: apiNames.POSTS,
-                stereotype: apiStereotypes.API_STARTED,
+                name: ApiNames.POSTS,
+                stereotype: ApiStereotypes.API_STARTED,
             },
         },
     };
@@ -32,8 +32,8 @@ export const fetchingPostsSucceeded = (posts) => {
         payload: posts,
         meta: {
             api: {
-                name: apiNames.POSTS,
-                stereotype: apiStereotypes.API_SUCCESS,
+                name: ApiNames.POSTS,
+                stereotype: ApiStereotypes.API_SUCCESS,
             },
         },
 
@@ -46,8 +46,8 @@ export const fetchingPostsFailed = (error) => {
         payload: error,
         meta: {
             api: {
-                name: apiNames.POSTS,
-                stereotype: apiStereotypes.API_FAILURE,
+                name: ApiNames.POSTS,
+                stereotype: ApiStereotypes.API_FAILURE,
             },
         },
 
