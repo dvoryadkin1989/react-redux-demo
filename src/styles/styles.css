@@ -2,7 +2,8 @@ body {
     background-color: lightblue;
 }
 
-.main-content-panel {
-    width: 80%;
-    background-color: lightgray;
+.posts-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
